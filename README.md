@@ -2,7 +2,7 @@
 
 Can a simple hedge retain more funding income by avoiding unnecessary trades?
 
-This Python study buys BTC spot and shorts the same BTC quantity in a USDT perpetual. It compares monthly resets with holding positions, with and without a funding screen. All four rules check collateral daily and can reduce both legs together.
+This Python study buys BTC spot and shorts the same BTC quantity in a USDT perpetual. It compares monthly resets with holding positions, with and without a funding screen. All four rules include collateral controls and can reduce both legs together.
 
 ## Results
 
@@ -33,7 +33,7 @@ Holding keeps the existing quantity; monthly resets resize and realise the whole
 
 The current rule enters at the first available month-start, 01:00 UTC, and keeps the matched quantity without reinvesting unrealized profits. The optional screen projects the preceding seven days of funding over the coming month and compares it with round-trip costs. It uses only events strictly before month-start 00:00, then enters or exits at 01:00. Future funding is unknown.
 
-At daily 00:00, including month-start, derivative mark equity below 25% of short mark notional triggers a paired reduction at 01:00. Selling spot supports the remaining short. The signal-time target is derivative mark equity of 50% of remaining spot value; the delay can leave the executed ratio away from target. No outside cash is added.
+For persistent positions, at daily 00:00, including month-start, derivative mark equity below 25% of short mark notional triggers a paired reduction at 01:00. Monthly variants use the same check between rolls, but reset collateral at the scheduled month-start roll instead. Selling spot supports the remaining short. The signal-time target is derivative mark equity of 50% of remaining spot value; the delay can leave the executed ratio away from target. No outside cash is added.
 
 - Funding cash flow: `quantity × settlement mark × settled rate`.
 - Short realized P&L: `closed quantity × (entry price − close price)`.
