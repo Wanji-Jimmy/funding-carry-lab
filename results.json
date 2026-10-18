@@ -1,0 +1,1254 @@
+{
+  "configuration": {
+    "initial_usdt": 100000.0,
+    "initial_margin_ratio": 0.5,
+    "spot_fee_bps": 10,
+    "perp_fee_bps": 5,
+    "slippage_bps_per_leg": 2,
+    "maintenance_stress_ratio": 0.01,
+    "funding_lookback_days": 7,
+    "entry_time": "First day of month, 01:00 UTC; decision at 00:00",
+    "resize_rule": "At daily 00:00, if derivative mark equity / short mark notional < half the initial ratio, reduce both legs at 01:00. Signal-time target: derivative mark equity / remaining spot value = initial ratio.",
+    "execution": "Primary: retain matched positions; trade only entry, exit and collateral reductions. Monthly net-spot/perpetual resets remain as a comparison.",
+    "cash_yield": 0,
+    "capital_basis": "Spot purchase + separate derivative collateral + transaction costs",
+    "primary_period": "2024-01-01 01:00 UTC to 2026-01-01 01:00 UTC",
+    "data_selection": "Two complete years with exact settlement mark prices; chosen before outcomes, not by performance."
+  },
+  "inputs": {
+    "hourly.csv": {
+      "sha256": "cc114cd325bd655f836ff7b6d8e6c5e8da12f613dec82891de0397ac95d29de0",
+      "reference_match": true
+    },
+    "funding.csv": {
+      "sha256": "d55006b247f45fa2288a157c35dce3a0afeddcc9053cdbd232375f26d387fdc0",
+      "reference_match": true
+    }
+  },
+  "base": {
+    "always": {
+      "ending_usdt": 109930.02670535672,
+      "net_pnl": 9930.026705356722,
+      "total_return": 0.0993002670535672,
+      "cagr": 0.04844126331941112,
+      "max_drawdown": -0.0018978641717549705,
+      "spot_pnl": 66662.76073738195,
+      "perp_pnl": -66662.23766198763,
+      "funding_pnl": 12745.086923347439,
+      "costs": 2815.5832933849288,
+      "combined_price_pnl": 0.523075394317857,
+      "active_hours": 17544,
+      "stress_flag_hours": 2,
+      "stress_flag_months": [
+        "2024-02"
+      ],
+      "return_status": "Unconstrained paper path: collateral stress flagged",
+      "reconciliation_error": -1.0550138540565968e-10
+    },
+    "screen": {
+      "ending_usdt": 108205.06543989888,
+      "net_pnl": 8205.065439898885,
+      "total_return": 0.08205065439898895,
+      "cagr": 0.04018858475373177,
+      "max_drawdown": -0.003476262746683556,
+      "spot_pnl": 40214.13002325132,
+      "perp_pnl": -40196.31807864002,
+      "funding_pnl": 10966.194199171194,
+      "costs": 2778.940703883649,
+      "combined_price_pnl": 17.811944611297804,
+      "active_hours": 13128,
+      "stress_flag_hours": 2,
+      "stress_flag_months": [
+        "2024-02"
+      ],
+      "return_status": "Unconstrained paper path: collateral stress flagged",
+      "reconciliation_error": 4.18367562815547e-11
+    },
+    "buffered": {
+      "ending_usdt": 107881.66350399994,
+      "net_pnl": 7881.663503999938,
+      "total_return": 0.07881663503999947,
+      "cagr": 0.038634033503585075,
+      "max_drawdown": -0.003476262746684,
+      "spot_pnl": 36125.060673467524,
+      "perp_pnl": -36101.31869187187,
+      "funding_pnl": 10623.672343729206,
+      "costs": 2765.7508213247947,
+      "combined_price_pnl": 23.74198159565276,
+      "active_hours": 13128,
+      "stress_flag_hours": 0,
+      "stress_flag_months": [],
+      "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+      "reconciliation_error": -1.255102688446641e-10
+    }
+  },
+  "collateral_diagnostics": [
+    {
+      "month": "2024-01",
+      "entry_time": "2024-01-01T01:00:00+00:00",
+      "exit_time": "2024-02-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.15844700846067417,
+      "worst_hour": "2024-01-11T14:00:00+00:00",
+      "funding_events": 93,
+      "funding_per_btc": 471.3751583744605,
+      "trailing_daily_rate": 0.0010231114285714285,
+      "forecast_break_even_days": 3.712482808768464,
+      "holding_days": 31.0
+    },
+    {
+      "month": "2024-02",
+      "entry_time": "2024-02-01T01:00:00+00:00",
+      "exit_time": "2024-03-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.5137054364518557,
+      "worst_hour": "2024-02-28T17:00:00+00:00",
+      "funding_events": 87,
+      "funding_per_btc": 716.7701772434507,
+      "trailing_daily_rate": 0.00026846857142857146,
+      "forecast_break_even_days": 14.1575925119455,
+      "holding_days": 29.0
+    },
+    {
+      "month": "2024-03",
+      "entry_time": "2024-03-01T01:00:00+00:00",
+      "exit_time": "2024-04-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.19086962330795426,
+      "worst_hour": "2024-03-14T07:00:00+00:00",
+      "funding_events": 93,
+      "funding_per_btc": 2139.8942153449557,
+      "trailing_daily_rate": 0.0008788771428571429,
+      "forecast_break_even_days": 4.320465372560816,
+      "holding_days": 31.0
+    },
+    {
+      "month": "2024-04",
+      "entry_time": "2024-04-01T01:00:00+00:00",
+      "exit_time": "2024-05-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.03028257808181648,
+      "worst_hour": "2024-04-08T12:00:00+00:00",
+      "funding_events": 90,
+      "funding_per_btc": 525.395808753625,
+      "trailing_daily_rate": 0.0008512771428571428,
+      "forecast_break_even_days": 4.460602131034171,
+      "holding_days": 30.0
+    },
+    {
+      "month": "2024-05",
+      "entry_time": "2024-05-01T01:00:00+00:00",
+      "exit_time": "2024-06-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.20527714154192842,
+      "worst_hour": "2024-05-21T00:00:00+00:00",
+      "funding_events": 93,
+      "funding_per_btc": 420.74687201873076,
+      "trailing_daily_rate": 0.00014242285714285717,
+      "forecast_break_even_days": 26.68693639233895,
+      "holding_days": 31.0
+    },
+    {
+      "month": "2024-06",
+      "entry_time": "2024-06-01T01:00:00+00:00",
+      "exit_time": "2024-07-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.07243519285956627,
+      "worst_hour": "2024-06-07T12:00:00+00:00",
+      "funding_events": 90,
+      "funding_per_btc": 563.6869896772089,
+      "trailing_daily_rate": 0.00031346428571428573,
+      "forecast_break_even_days": 12.11955011913803,
+      "holding_days": 30.0
+    },
+    {
+      "month": "2024-07",
+      "entry_time": "2024-07-01T01:00:00+00:00",
+      "exit_time": "2024-08-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.11883564242452266,
+      "worst_hour": "2024-07-29T13:00:00+00:00",
+      "funding_events": 93,
+      "funding_per_btc": 364.24388865317246,
+      "trailing_daily_rate": 0.0002831,
+      "forecast_break_even_days": 13.423638419119943,
+      "holding_days": 31.0
+    },
+    {
+      "month": "2024-08",
+      "entry_time": "2024-08-01T01:00:00+00:00",
+      "exit_time": "2024-09-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.02572439348874696,
+      "worst_hour": "2024-08-01T22:00:00+00:00",
+      "funding_events": 93,
+      "funding_per_btc": 73.48040230368453,
+      "trailing_daily_rate": 0.00021411285714285715,
+      "forecast_break_even_days": 17.752197461278627,
+      "holding_days": 31.0
+    },
+    {
+      "month": "2024-09",
+      "entry_time": "2024-09-01T01:00:00+00:00",
+      "exit_time": "2024-10-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.13779360381258254,
+      "worst_hour": "2024-09-27T14:00:00+00:00",
+      "funding_events": 90,
+      "funding_per_btc": 108.528685764449,
+      "trailing_daily_rate": 3.7897142857142856e-05,
+      "forecast_break_even_days": 100.29858363946838,
+      "holding_days": 30.0
+    },
+    {
+      "month": "2024-10",
+      "entry_time": "2024-10-01T01:00:00+00:00",
+      "exit_time": "2024-11-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.16433913338788417,
+      "worst_hour": "2024-10-29T19:00:00+00:00",
+      "funding_events": 93,
+      "funding_per_btc": 454.61173762825547,
+      "trailing_daily_rate": 0.00013274428571428571,
+      "forecast_break_even_days": 28.629609036162122,
+      "holding_days": 31.0
+    },
+    {
+      "month": "2024-11",
+      "entry_time": "2024-11-01T01:00:00+00:00",
+      "exit_time": "2024-12-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.42319021442678795,
+      "worst_hour": "2024-11-22T19:00:00+00:00",
+      "funding_events": 90,
+      "funding_per_btc": 1148.3465237209753,
+      "trailing_daily_rate": 0.00028631285714285717,
+      "forecast_break_even_days": 13.269337683915959,
+      "holding_days": 30.0
+    },
+    {
+      "month": "2024-12",
+      "entry_time": "2024-12-01T01:00:00+00:00",
+      "exit_time": "2025-01-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.126745866910935,
+      "worst_hour": "2024-12-17T14:00:00+00:00",
+      "funding_events": 93,
+      "funding_per_btc": 1182.7896871055445,
+      "trailing_daily_rate": 0.0005164642857142857,
+      "forecast_break_even_days": 7.355475588077903,
+      "holding_days": 31.0
+    },
+    {
+      "month": "2025-01",
+      "entry_time": "2025-01-01T01:00:00+00:00",
+      "exit_time": "2025-02-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.16970097191503825,
+      "worst_hour": "2025-01-20T06:00:00+00:00",
+      "funding_events": 93,
+      "funding_per_btc": 725.5890627988724,
+      "trailing_daily_rate": 0.0002649128571428572,
+      "forecast_break_even_days": 14.346841628217923,
+      "holding_days": 31.0
+    },
+    {
+      "month": "2025-02",
+      "entry_time": "2025-02-01T01:00:00+00:00",
+      "exit_time": "2025-03-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.012801109986502739,
+      "worst_hour": "2025-02-01T02:00:00+00:00",
+      "funding_events": 84,
+      "funding_per_btc": 360.55963501623677,
+      "trailing_daily_rate": 0.00023357714285714292,
+      "forecast_break_even_days": 16.273725016167017,
+      "holding_days": 28.0
+    },
+    {
+      "month": "2025-03",
+      "entry_time": "2025-03-01T01:00:00+00:00",
+      "exit_time": "2025-04-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.14430019472021186,
+      "worst_hour": "2025-03-02T17:00:00+00:00",
+      "funding_events": 93,
+      "funding_per_btc": 155.39530203590525,
+      "trailing_daily_rate": 0.00015192000000000002,
+      "forecast_break_even_days": 25.02229694054306,
+      "holding_days": 31.0
+    },
+    {
+      "month": "2025-04",
+      "entry_time": "2025-04-01T01:00:00+00:00",
+      "exit_time": "2025-05-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.16789430745670697,
+      "worst_hour": "2025-04-25T14:00:00+00:00",
+      "funding_events": 90,
+      "funding_per_btc": 176.90010591172344,
+      "trailing_daily_rate": 5.545571428571428e-05,
+      "forecast_break_even_days": 68.54004427833239,
+      "holding_days": 30.0
+    },
+    {
+      "month": "2025-05",
+      "entry_time": "2025-05-01T01:00:00+00:00",
+      "exit_time": "2025-06-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.19509275953690403,
+      "worst_hour": "2025-05-22T17:00:00+00:00",
+      "funding_events": 93,
+      "funding_per_btc": 453.66954158791805,
+      "trailing_daily_rate": -3.425857142857143e-05,
+      "forecast_break_even_days": null,
+      "holding_days": 31.0
+    },
+    {
+      "month": "2025-06",
+      "entry_time": "2025-06-01T01:00:00+00:00",
+      "exit_time": "2025-07-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.06844296742385426,
+      "worst_hour": "2025-06-09T21:00:00+00:00",
+      "funding_events": 90,
+      "funding_per_btc": 252.48633424743085,
+      "trailing_daily_rate": 0.0001754857142857143,
+      "forecast_break_even_days": 21.660348666239653,
+      "holding_days": 30.0
+    },
+    {
+      "month": "2025-07",
+      "entry_time": "2025-07-01T01:00:00+00:00",
+      "exit_time": "2025-08-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.15731949509399276,
+      "worst_hour": "2025-07-14T07:00:00+00:00",
+      "funding_events": 93,
+      "funding_per_btc": 848.2923832458853,
+      "trailing_daily_rate": 7.044e-05,
+      "forecast_break_even_days": 53.960788181792665,
+      "holding_days": 31.0
+    },
+    {
+      "month": "2025-08",
+      "entry_time": "2025-08-01T01:00:00+00:00",
+      "exit_time": "2025-09-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.08738196816672794,
+      "worst_hour": "2025-08-14T00:00:00+00:00",
+      "funding_events": 93,
+      "funding_per_btc": 704.0647490780558,
+      "trailing_daily_rate": 0.0002938485714285714,
+      "forecast_break_even_days": 12.93600004320511,
+      "holding_days": 31.0
+    },
+    {
+      "month": "2025-09",
+      "entry_time": "2025-09-01T01:00:00+00:00",
+      "exit_time": "2025-10-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.09728716901791022,
+      "worst_hour": "2025-09-18T18:00:00+00:00",
+      "funding_events": 90,
+      "funding_per_btc": 491.7439957787675,
+      "trailing_daily_rate": 0.0001827014285714286,
+      "forecast_break_even_days": 20.803589075266384,
+      "holding_days": 30.0
+    },
+    {
+      "month": "2025-10",
+      "entry_time": "2025-10-01T01:00:00+00:00",
+      "exit_time": "2025-11-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.11448281620904804,
+      "worst_hour": "2025-10-06T18:00:00+00:00",
+      "funding_events": 93,
+      "funding_per_btc": 371.5045104240136,
+      "trailing_daily_rate": 0.00011785857142857142,
+      "forecast_break_even_days": 32.25279494034201,
+      "holding_days": 31.0
+    },
+    {
+      "month": "2025-11",
+      "entry_time": "2025-11-01T01:00:00+00:00",
+      "exit_time": "2025-12-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.023548523288378854,
+      "worst_hour": "2025-11-02T12:00:00+00:00",
+      "funding_events": 90,
+      "funding_per_btc": 433.4332679996471,
+      "trailing_daily_rate": 0.00014636714285714287,
+      "forecast_break_even_days": 25.96969182208922,
+      "holding_days": 30.0
+    },
+    {
+      "month": "2025-12",
+      "entry_time": "2025-12-01T01:00:00+00:00",
+      "exit_time": "2026-01-01T01:00:00+00:00",
+      "minimum_initial_collateral_ratio_hindsight": 0.09731361121109203,
+      "worst_hour": "2025-12-09T17:00:00+00:00",
+      "funding_events": 93,
+      "funding_per_btc": 382.1824784071946,
+      "trailing_daily_rate": 4.8650000000000003e-05,
+      "forecast_break_even_days": 78.12474057825291,
+      "holding_days": 31.0
+    }
+  ],
+  "execution_comparison": {
+    "always": {
+      "full_reset": {
+        "ending_usdt": 106107.07111220798,
+        "net_pnl": 6107.071112207981,
+        "total_return": 0.061070711122079846,
+        "cagr": 0.030061983396600933,
+        "max_drawdown": -0.005833439862841683,
+        "spot_pnl": 66251.8354317751,
+        "perp_pnl": -66251.53498163413,
+        "funding_pnl": 12578.673909645498,
+        "costs": 6471.903247578283,
+        "combined_price_pnl": 0.3004501409595832,
+        "active_hours": 17544,
+        "stress_flag_hours": 2,
+        "stress_flag_months": [
+          "2024-02"
+        ],
+        "return_status": "Unconstrained paper path: collateral stress flagged",
+        "reconciliation_error": -1.9372237147763371e-10
+      },
+      "net_spot": {
+        "ending_usdt": 109930.02670535672,
+        "net_pnl": 9930.026705356722,
+        "total_return": 0.0993002670535672,
+        "cagr": 0.04844126331941112,
+        "max_drawdown": -0.0018978641717549705,
+        "spot_pnl": 66662.76073738195,
+        "perp_pnl": -66662.23766198763,
+        "funding_pnl": 12745.086923347439,
+        "costs": 2815.5832933849288,
+        "combined_price_pnl": 0.523075394317857,
+        "active_hours": 17544,
+        "stress_flag_hours": 2,
+        "stress_flag_months": [
+          "2024-02"
+        ],
+        "return_status": "Unconstrained paper path: collateral stress flagged",
+        "reconciliation_error": -1.0550138540565968e-10
+      },
+      "same_original_quantity_schedule_spot_cost_saving": 3704.960244620804,
+      "actual_net_pnl_change": 3822.955593148741,
+      "interpretation": "Exact fixed-quantity cost identity plus sequential-capital comparison. The latter also changes later quantity and funding; not all improvement is a direct fee saving."
+    },
+    "screen": {
+      "full_reset": {
+        "ending_usdt": 106066.05957889133,
+        "net_pnl": 6066.059578891334,
+        "total_return": 0.06066059578891325,
+        "cagr": 0.029863035255238923,
+        "max_drawdown": -0.004762020532942501,
+        "spot_pnl": 40242.77175100263,
+        "perp_pnl": -40225.56306547456,
+        "funding_pnl": 10872.244056721409,
+        "costs": 4823.393163357995,
+        "combined_price_pnl": 17.20868552806496,
+        "active_hours": 13128,
+        "stress_flag_hours": 2,
+        "stress_flag_months": [
+          "2024-02"
+        ],
+        "return_status": "Unconstrained paper path: collateral stress flagged",
+        "reconciliation_error": -1.446096575818956e-10
+      },
+      "net_spot": {
+        "ending_usdt": 108205.06543989888,
+        "net_pnl": 8205.065439898885,
+        "total_return": 0.08205065439898895,
+        "cagr": 0.04018858475373177,
+        "max_drawdown": -0.003476262746683556,
+        "spot_pnl": 40214.13002325132,
+        "perp_pnl": -40196.31807864002,
+        "funding_pnl": 10966.194199171194,
+        "costs": 2778.940703883649,
+        "combined_price_pnl": 17.811944611297804,
+        "active_hours": 13128,
+        "stress_flag_hours": 2,
+        "stress_flag_months": [
+          "2024-02"
+        ],
+        "return_status": "Unconstrained paper path: collateral stress flagged",
+        "reconciliation_error": 4.18367562815547e-11
+      },
+      "same_original_quantity_schedule_spot_cost_saving": 2079.053568663188,
+      "actual_net_pnl_change": 2139.0058610075503,
+      "interpretation": "Exact fixed-quantity cost identity plus sequential-capital comparison. The latter also changes later quantity and funding; not all improvement is a direct fee saving."
+    },
+    "buffered": {
+      "full_reset": {
+        "ending_usdt": 105749.05067675246,
+        "net_pnl": 5749.050676752464,
+        "total_return": 0.05749050676752465,
+        "cagr": 0.028323915433697833,
+        "max_drawdown": -0.0047620205329428344,
+        "spot_pnl": 36175.82597892751,
+        "perp_pnl": -36152.63877657422,
+        "funding_pnl": 10532.300988937994,
+        "costs": 4806.437514538672,
+        "combined_price_pnl": 23.187202353292378,
+        "active_hours": 13128,
+        "stress_flag_hours": 0,
+        "stress_flag_months": [],
+        "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+        "reconciliation_error": -1.5006662579253316e-10
+      },
+      "net_spot": {
+        "ending_usdt": 107881.66350399994,
+        "net_pnl": 7881.663503999938,
+        "total_return": 0.07881663503999947,
+        "cagr": 0.038634033503585075,
+        "max_drawdown": -0.003476262746684,
+        "spot_pnl": 36125.060673467524,
+        "perp_pnl": -36101.31869187187,
+        "funding_pnl": 10623.672343729206,
+        "costs": 2765.7508213247947,
+        "combined_price_pnl": 23.74198159565276,
+        "active_hours": 13128,
+        "stress_flag_hours": 0,
+        "stress_flag_months": [],
+        "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+        "reconciliation_error": -1.255102688446641e-10
+      },
+      "same_original_quantity_schedule_spot_cost_saving": 2075.1579493818017,
+      "actual_net_pnl_change": 2132.6128272474743,
+      "interpretation": "Exact fixed-quantity cost identity plus sequential-capital comparison. The latter also changes later quantity and funding; not all improvement is a direct fee saving."
+    }
+  },
+  "collateral_case": {
+    "time": "2024-02-28T17:00:00+00:00",
+    "selection": "Most severe flagged hour for the always policy in development data; explanatory case, not a trading signal.",
+    "spot_open": 62412.0,
+    "perp_open": 62530.2,
+    "mark_open": 62538.1,
+    "mark_high": 64195.01042914,
+    "policies": {
+      "always": {
+        "combined_equity": 101255.57077502002,
+        "derivative_mark_equity": 2710.2726401057544,
+        "spot_value": 98532.82602497391,
+        "btc_quantity_each_leg": 1.578748093715534,
+        "stressed_collateral_ratio": 0.000931727229522343,
+        "conservative_flag": true,
+        "reductions_before_hour": []
+      },
+      "screen": {
+        "combined_equity": 101255.57077502002,
+        "derivative_mark_equity": 2710.2726401057544,
+        "spot_value": 98532.82602497391,
+        "btc_quantity_each_leg": 1.578748093715534,
+        "stressed_collateral_ratio": 0.000931727229522343,
+        "conservative_flag": true,
+        "reductions_before_hour": []
+      },
+      "buffered": {
+        "combined_equity": 101143.55199755146,
+        "derivative_mark_equity": 20186.752024731406,
+        "spot_value": 80946.55390193904,
+        "btc_quantity_each_leg": 1.2969709975956394,
+        "stressed_collateral_ratio": 0.21664652228022374,
+        "conservative_flag": false,
+        "reductions_before_hour": [
+          {
+            "time": 1707958800000,
+            "reason": "collateral_reduction",
+            "q_before": 1.578748093715534,
+            "q_after": 1.2969709975956394,
+            "delta_q": -0.28177709611989465,
+            "spot": 52321.19,
+            "perp": 52355.2,
+            "spot_traded_q": 0.28177709611989465,
+            "perp_traded_q": 0.28177709611989465,
+            "spot_costs": 17.691495580484727,
+            "perp_costs": 10.326747355943416,
+            "costs": 28.018242936428145,
+            "realized_perp_pnl": -2788.212543815969,
+            "entry_price_before": 42460.1,
+            "entry_price_after": 42460.1,
+            "wallet_cash_after": 45731.50386590034
+          }
+        ]
+      }
+    }
+  },
+  "margin_sensitivity": [
+    {
+      "margin": 0.25,
+      "policy": "always",
+      "metrics": {
+        "ending_usdt": 112019.13650790574,
+        "net_pnl": 12019.136507905743,
+        "total_return": 0.12019136507905737,
+        "cagr": 0.058349849800229725,
+        "max_drawdown": -0.002276860789988011,
+        "spot_pnl": 80383.36504037448,
+        "perp_pnl": -80382.11331146295,
+        "funding_pnl": 15435.998197429977,
+        "costs": 3418.113418435777,
+        "combined_price_pnl": 1.251728911534883,
+        "active_hours": 17544,
+        "stress_flag_hours": 542,
+        "stress_flag_months": [
+          "2024-02",
+          "2024-11"
+        ],
+        "return_status": "Unconstrained paper path: collateral stress flagged",
+        "reconciliation_error": 8.185452315956354e-12
+      }
+    },
+    {
+      "margin": 0.25,
+      "policy": "screen",
+      "metrics": {
+        "ending_usdt": 109913.6443462713,
+        "net_pnl": 9913.644346271307,
+        "total_return": 0.09913644346271311,
+        "cagr": 0.04836319168839154,
+        "max_drawdown": -0.004169497983424142,
+        "spot_pnl": 48228.63786328147,
+        "perp_pnl": -48206.335784480936,
+        "funding_pnl": 13261.850551536487,
+        "costs": 3370.5082840656924,
+        "combined_price_pnl": 22.30207880053058,
+        "active_hours": 13128,
+        "stress_flag_hours": 542,
+        "stress_flag_months": [
+          "2024-02",
+          "2024-11"
+        ],
+        "return_status": "Unconstrained paper path: collateral stress flagged",
+        "reconciliation_error": -1.8189894035458565e-11
+      }
+    },
+    {
+      "margin": 0.25,
+      "policy": "buffered",
+      "metrics": {
+        "ending_usdt": 109166.019448023,
+        "net_pnl": 9166.019448022998,
+        "total_return": 0.09166019448023,
+        "cagr": 0.04479410030229247,
+        "max_drawdown": -0.004146240512620247,
+        "spot_pnl": 43744.739059584004,
+        "perp_pnl": -43700.95266700674,
+        "funding_pnl": 12501.523562186458,
+        "costs": 3379.2905067407205,
+        "combined_price_pnl": 43.78639257726172,
+        "active_hours": 13128,
+        "stress_flag_hours": 0,
+        "stress_flag_months": [],
+        "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+        "reconciliation_error": -4.547473508864641e-13
+      }
+    },
+    {
+      "margin": 0.5,
+      "policy": "always",
+      "metrics": {
+        "ending_usdt": 109930.02670535672,
+        "net_pnl": 9930.026705356722,
+        "total_return": 0.0993002670535672,
+        "cagr": 0.04844126331941112,
+        "max_drawdown": -0.0018978641717549705,
+        "spot_pnl": 66662.76073738195,
+        "perp_pnl": -66662.23766198763,
+        "funding_pnl": 12745.086923347439,
+        "costs": 2815.5832933849288,
+        "combined_price_pnl": 0.523075394317857,
+        "active_hours": 17544,
+        "stress_flag_hours": 2,
+        "stress_flag_months": [
+          "2024-02"
+        ],
+        "return_status": "Unconstrained paper path: collateral stress flagged",
+        "reconciliation_error": -1.0550138540565968e-10
+      }
+    },
+    {
+      "margin": 0.5,
+      "policy": "screen",
+      "metrics": {
+        "ending_usdt": 108205.06543989888,
+        "net_pnl": 8205.065439898885,
+        "total_return": 0.08205065439898895,
+        "cagr": 0.04018858475373177,
+        "max_drawdown": -0.003476262746683556,
+        "spot_pnl": 40214.13002325132,
+        "perp_pnl": -40196.31807864002,
+        "funding_pnl": 10966.194199171194,
+        "costs": 2778.940703883649,
+        "combined_price_pnl": 17.811944611297804,
+        "active_hours": 13128,
+        "stress_flag_hours": 2,
+        "stress_flag_months": [
+          "2024-02"
+        ],
+        "return_status": "Unconstrained paper path: collateral stress flagged",
+        "reconciliation_error": 4.18367562815547e-11
+      }
+    },
+    {
+      "margin": 0.5,
+      "policy": "buffered",
+      "metrics": {
+        "ending_usdt": 107881.66350399994,
+        "net_pnl": 7881.663503999938,
+        "total_return": 0.07881663503999947,
+        "cagr": 0.038634033503585075,
+        "max_drawdown": -0.003476262746684,
+        "spot_pnl": 36125.060673467524,
+        "perp_pnl": -36101.31869187187,
+        "funding_pnl": 10623.672343729206,
+        "costs": 2765.7508213247947,
+        "combined_price_pnl": 23.74198159565276,
+        "active_hours": 13128,
+        "stress_flag_hours": 0,
+        "stress_flag_months": [],
+        "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+        "reconciliation_error": -1.255102688446641e-10
+      }
+    },
+    {
+      "margin": 1.0,
+      "policy": "always",
+      "metrics": {
+        "ending_usdt": 107367.89135030925,
+        "net_pnl": 7367.891350309248,
+        "total_return": 0.07367891350309241,
+        "cagr": 0.036159594959167096,
+        "max_drawdown": -0.0014238485540736256,
+        "spot_pnl": 49695.19051519142,
+        "perp_pnl": -49695.280174339365,
+        "funding_pnl": 9449.298372213549,
+        "costs": 2081.317362756308,
+        "combined_price_pnl": -0.0896591479468043,
+        "active_hours": 17544,
+        "stress_flag_hours": 0,
+        "stress_flag_months": [],
+        "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+        "reconciliation_error": -4.5929482439532876e-11
+      }
+    },
+    {
+      "margin": 1.0,
+      "policy": "screen",
+      "metrics": {
+        "ending_usdt": 106101.46979461248,
+        "net_pnl": 6101.46979461248,
+        "total_return": 0.061014697946124796,
+        "cagr": 0.030034813510786185,
+        "max_drawdown": -0.00260877454501407,
+        "spot_pnl": 30180.37027894605,
+        "perp_pnl": -30167.72717845362,
+        "funding_pnl": 8145.414332077784,
+        "costs": 2056.5876379577026,
+        "combined_price_pnl": 12.643100492430676,
+        "active_hours": 13128,
+        "stress_flag_hours": 0,
+        "stress_flag_months": [],
+        "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+        "reconciliation_error": -3.228706191293895e-11
+      }
+    },
+    {
+      "margin": 1.0,
+      "policy": "buffered",
+      "metrics": {
+        "ending_usdt": 105978.92238178806,
+        "net_pnl": 5978.922381788056,
+        "total_return": 0.059789223817880544,
+        "cagr": 0.029440202371521673,
+        "max_drawdown": -0.00260877454501407,
+        "spot_pnl": 28548.05218740359,
+        "perp_pnl": -28514.423132698103,
+        "funding_pnl": 7997.241985035065,
+        "costs": 2051.94865795253,
+        "combined_price_pnl": 33.62905470548867,
+        "active_hours": 13128,
+        "stress_flag_hours": 0,
+        "stress_flag_months": [],
+        "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+        "reconciliation_error": 3.183231456205249e-11
+      }
+    }
+  ],
+  "cost_sensitivity": [
+    {
+      "slippage_bps": 0,
+      "policy": "always",
+      "metrics": {
+        "ending_usdt": 110716.23981881494,
+        "net_pnl": 10716.239818814938,
+        "total_return": 0.10716239818814932,
+        "cagr": 0.05218121451670754,
+        "max_drawdown": -0.001632208873916574,
+        "spot_pnl": 66758.41976974787,
+        "perp_pnl": -66757.84016507323,
+        "funding_pnl": 12780.365662607759,
+        "costs": 2064.705448467518,
+        "combined_price_pnl": 0.5796046746399952,
+        "active_hours": 17544,
+        "stress_flag_hours": 2,
+        "stress_flag_months": [
+          "2024-02"
+        ],
+        "return_status": "Unconstrained paper path: collateral stress flagged",
+        "reconciliation_error": 5.729816621169448e-11
+      }
+    },
+    {
+      "slippage_bps": 0,
+      "policy": "screen",
+      "metrics": {
+        "ending_usdt": 109196.4849240424,
+        "net_pnl": 9196.484924042394,
+        "total_return": 0.09196484924042392,
+        "cagr": 0.0449397782233345,
+        "max_drawdown": -0.002410164929373404,
+        "spot_pnl": 37294.66716342778,
+        "perp_pnl": -37287.836087932694,
+        "funding_pnl": 11227.877172278857,
+        "costs": 2038.2233237315377,
+        "combined_price_pnl": 6.831075495087134,
+        "active_hours": 13872,
+        "stress_flag_hours": 2,
+        "stress_flag_months": [
+          "2024-02"
+        ],
+        "return_status": "Unconstrained paper path: collateral stress flagged",
+        "reconciliation_error": -1.2732925824820995e-11
+      }
+    },
+    {
+      "slippage_bps": 0,
+      "policy": "buffered",
+      "metrics": {
+        "ending_usdt": 108868.58907759984,
+        "net_pnl": 8868.589077599841,
+        "total_return": 0.08868589077599842,
+        "cagr": 0.043370796144517776,
+        "max_drawdown": -0.002410164929373404,
+        "spot_pnl": 33209.53522471552,
+        "perp_pnl": -33196.754390808506,
+        "funding_pnl": 10883.957030692565,
+        "costs": 2028.1487869995985,
+        "combined_price_pnl": 12.780833907010674,
+        "active_hours": 13872,
+        "stress_flag_hours": 0,
+        "stress_flag_months": [],
+        "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+        "reconciliation_error": -1.3596945791505277e-10
+      }
+    },
+    {
+      "slippage_bps": 2,
+      "policy": "always",
+      "metrics": {
+        "ending_usdt": 109930.02670535672,
+        "net_pnl": 9930.026705356722,
+        "total_return": 0.0993002670535672,
+        "cagr": 0.04844126331941112,
+        "max_drawdown": -0.0018978641717549705,
+        "spot_pnl": 66662.76073738195,
+        "perp_pnl": -66662.23766198763,
+        "funding_pnl": 12745.086923347439,
+        "costs": 2815.5832933849288,
+        "combined_price_pnl": 0.523075394317857,
+        "active_hours": 17544,
+        "stress_flag_hours": 2,
+        "stress_flag_months": [
+          "2024-02"
+        ],
+        "return_status": "Unconstrained paper path: collateral stress flagged",
+        "reconciliation_error": -1.0550138540565968e-10
+      }
+    },
+    {
+      "slippage_bps": 2,
+      "policy": "screen",
+      "metrics": {
+        "ending_usdt": 108205.06543989888,
+        "net_pnl": 8205.065439898885,
+        "total_return": 0.08205065439898895,
+        "cagr": 0.04018858475373177,
+        "max_drawdown": -0.003476262746683556,
+        "spot_pnl": 40214.13002325132,
+        "perp_pnl": -40196.31807864002,
+        "funding_pnl": 10966.194199171194,
+        "costs": 2778.940703883649,
+        "combined_price_pnl": 17.811944611297804,
+        "active_hours": 13128,
+        "stress_flag_hours": 2,
+        "stress_flag_months": [
+          "2024-02"
+        ],
+        "return_status": "Unconstrained paper path: collateral stress flagged",
+        "reconciliation_error": 4.18367562815547e-11
+      }
+    },
+    {
+      "slippage_bps": 2,
+      "policy": "buffered",
+      "metrics": {
+        "ending_usdt": 107881.66350399994,
+        "net_pnl": 7881.663503999938,
+        "total_return": 0.07881663503999947,
+        "cagr": 0.038634033503585075,
+        "max_drawdown": -0.003476262746684,
+        "spot_pnl": 36125.060673467524,
+        "perp_pnl": -36101.31869187187,
+        "funding_pnl": 10623.672343729206,
+        "costs": 2765.7508213247947,
+        "combined_price_pnl": 23.74198159565276,
+        "active_hours": 13128,
+        "stress_flag_hours": 0,
+        "stress_flag_months": [],
+        "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+        "reconciliation_error": -1.255102688446641e-10
+      }
+    },
+    {
+      "slippage_bps": 5,
+      "policy": "always",
+      "metrics": {
+        "ending_usdt": 108761.062216439,
+        "net_pnl": 8761.062216438993,
+        "total_return": 0.08761062216438997,
+        "cagr": 0.04285576529087742,
+        "max_drawdown": -0.002463186443963039,
+        "spot_pnl": 66519.38023090354,
+        "perp_pnl": -66518.94173379839,
+        "funding_pnl": 12692.44217949461,
+        "costs": 3931.8184601608136,
+        "combined_price_pnl": 0.4384971051476896,
+        "active_hours": 17544,
+        "stress_flag_hours": 2,
+        "stress_flag_months": [
+          "2024-02"
+        ],
+        "return_status": "Unconstrained paper path: collateral stress flagged",
+        "reconciliation_error": 4.9112713895738125e-11
+      }
+    },
+    {
+      "slippage_bps": 5,
+      "policy": "screen",
+      "metrics": {
+        "ending_usdt": 106497.86991427088,
+        "net_pnl": 6497.869914270879,
+        "total_return": 0.06497869914270882,
+        "cagr": 0.03195583304804961,
+        "max_drawdown": -0.004932586362856983,
+        "spot_pnl": 40122.23851990885,
+        "perp_pnl": -40004.14681110951,
+        "funding_pnl": 9500.881061591017,
+        "costs": 3121.10285611959,
+        "combined_price_pnl": 118.0917087993439,
+        "active_hours": 10176,
+        "stress_flag_hours": 2,
+        "stress_flag_months": [
+          "2024-02"
+        ],
+        "return_status": "Unconstrained paper path: collateral stress flagged",
+        "reconciliation_error": 1.0822986951097846e-10
+      }
+    },
+    {
+      "slippage_bps": 5,
+      "policy": "buffered",
+      "metrics": {
+        "ending_usdt": 106181.81357262452,
+        "net_pnl": 6181.813572624524,
+        "total_return": 0.06181813572624528,
+        "cagr": 0.03042446231881346,
+        "max_drawdown": -0.004932586362857094,
+        "spot_pnl": 36025.23157893486,
+        "perp_pnl": -35901.28218399292,
+        "funding_pnl": 9163.20535272323,
+        "costs": 3105.3411750406003,
+        "combined_price_pnl": 123.94939494194114,
+        "active_hours": 10176,
+        "stress_flag_hours": 0,
+        "stress_flag_months": [],
+        "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+        "reconciliation_error": -4.638422979041934e-11
+      }
+    }
+  ],
+  "boundaries": {
+    "funding": "Settled rate is known only afterwards. Screen uses only strictly earlier events; actual event timestamps and exact marks determine receipts.",
+    "capital": "Return includes spot capital and isolated collateral; selling a futures contract does not release its notional as spending cash.",
+    "risk": "Conservative hourly-high/negative-funding stress flag with hypothetical 1% maintenance. Not an exchange liquidation replay; paths with flags are unconstrained paper paths.",
+    "ex_post": "Required collateral uses the completed path and is diagnostic only; no rule sees this in advance.",
+    "limits": "Two years, fractional BTC sizing, simultaneous-leg hourly-open fills, fixed fees, zero cash yield, no exchange default/USDT depeg/ADL or exact liquidation model."
+  },
+  "holdout": {
+    "period": "2026-01-01 01:00 to 2026-10-01 01:00 UTC",
+    "status": "Originally reserved for the legacy rules; already inspected before this revision. Not a new independent test.",
+    "inputs": {
+      "hourly.csv": {
+        "sha256": "0135395814aa1e1a3cfe2bb9030f7785309856f3b0bfa75f8e4857805ede85a1",
+        "reference_match": true
+      },
+      "funding.csv": {
+        "sha256": "e51406c4d4ad9356ca692decbd50ac8658c0fc21396c82b64712649e82aabc52",
+        "reference_match": true
+      }
+    },
+    "base": {
+      "always": {
+        "ending_usdt": 100458.2086567462,
+        "net_pnl": 458.20865674619563,
+        "total_return": 0.0045820865674619515,
+        "cagr": 0.0061351702178975565,
+        "max_drawdown": -0.006934078592589987,
+        "spot_pnl": 2167.3192116402424,
+        "perp_pnl": -2154.441831431479,
+        "funding_pnl": 1526.9868952731824,
+        "costs": 1081.6556187359104,
+        "combined_price_pnl": 12.877380208763498,
+        "active_hours": 6552,
+        "stress_flag_hours": 0,
+        "stress_flag_months": [],
+        "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+        "reconciliation_error": 1.6007106751203537e-10
+      },
+      "screen": {
+        "ending_usdt": 100231.56822983653,
+        "net_pnl": 231.5682298365282,
+        "total_return": 0.002315682298365207,
+        "cagr": 0.0030993908779362034,
+        "max_drawdown": -0.0049486668139279155,
+        "spot_pnl": -10069.153738331393,
+        "perp_pnl": 10084.493822810375,
+        "funding_pnl": 1158.6621173480366,
+        "costs": 942.4339719905802,
+        "combined_price_pnl": 15.340084478981225,
+        "active_hours": 3600,
+        "stress_flag_hours": 0,
+        "stress_flag_months": [],
+        "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+        "reconciliation_error": 9.049472282640636e-11
+      },
+      "buffered": {
+        "ending_usdt": 100189.21465045611,
+        "net_pnl": 189.21465045610967,
+        "total_return": 0.001892146504561154,
+        "cagr": 0.002532334645264367,
+        "max_drawdown": -0.0049486668139279155,
+        "spot_pnl": -10214.686176374029,
+        "perp_pnl": 10229.527028347304,
+        "funding_pnl": 1116.492168001615,
+        "costs": 942.1183695188582,
+        "combined_price_pnl": 14.840851973274766,
+        "active_hours": 3600,
+        "stress_flag_hours": 0,
+        "stress_flag_months": [],
+        "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+        "reconciliation_error": 7.810285751475021e-11
+      }
+    }
+  },
+  "revision": {
+    "primary": "hold_plain",
+    "design": "Four predeclared combinations of monthly/persistent execution and screen/no screen; all protect collateral. No parameter search.",
+    "data_status": "Both windows were inspected before this revision. New results are retrospective, not untouched out-of-sample evidence.",
+    "accounting": "Cash wallet and unrealized short PnL tracked separately. Partial closing realizes only closed units. No position increases while held.",
+    "development": {
+      "variants": {
+        "monthly_screen": {
+          "ending_usdt": 107881.66350399994,
+          "net_pnl": 7881.663503999938,
+          "total_return": 0.07881663503999947,
+          "cagr": 0.038634033503585075,
+          "max_drawdown": -0.003476262746684,
+          "spot_pnl": 36125.060673467524,
+          "perp_pnl": -36101.31869187187,
+          "funding_pnl": 10623.672343729206,
+          "costs": 2765.7508213247947,
+          "combined_price_pnl": 23.74198159565276,
+          "active_hours": 13128,
+          "stress_flag_hours": 0,
+          "stress_flag_months": [],
+          "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+          "reconciliation_error": -1.255102688446641e-10,
+          "trade_events": 25,
+          "spot_turnover_usdt": 812031.312848233,
+          "perp_turnover_usdt": 2559018.922724165,
+          "collateral_reductions": 2
+        },
+        "monthly_plain": {
+          "ending_usdt": 109601.46922696728,
+          "net_pnl": 9601.469226967281,
+          "total_return": 0.09601469226967274,
+          "cagr": 0.04687437852516685,
+          "max_drawdown": -0.0018978641717549705,
+          "spot_pnl": 62501.313446640954,
+          "perp_pnl": -62494.82856247949,
+          "funding_pnl": 12397.190859942666,
+          "costs": 2802.206517136906,
+          "combined_price_pnl": 6.484884161465743,
+          "active_hours": 17544,
+          "stress_flag_hours": 0,
+          "stress_flag_months": [],
+          "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+          "reconciliation_error": 5.547917680814862e-11,
+          "trade_events": 27,
+          "spot_turnover_usdt": 319395.87598025595,
+          "perp_turnover_usdt": 3455616.3799437126,
+          "collateral_reductions": 2
+        },
+        "hold_screen": {
+          "ending_usdt": 109282.41508844466,
+          "net_pnl": 9282.415088444657,
+          "total_return": 0.09282415088444651,
+          "cagr": 0.04535056421067751,
+          "max_drawdown": -0.0032780958056409792,
+          "spot_pnl": 34423.73928412133,
+          "perp_pnl": -34382.55159699382,
+          "funding_pnl": 10654.593723646685,
+          "costs": 1413.3663223293966,
+          "combined_price_pnl": 41.18768712750898,
+          "active_hours": 13128,
+          "stress_flag_hours": 0,
+          "stress_flag_months": [],
+          "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+          "reconciliation_error": -1.405169314239174e-10,
+          "trade_events": 14,
+          "spot_turnover_usdt": 743942.212151366,
+          "perp_turnover_usdt": 743765.2396396534,
+          "collateral_reductions": 4
+        },
+        "hold_plain": {
+          "ending_usdt": 111916.9823884011,
+          "net_pnl": 11916.982388401098,
+          "total_return": 0.1191698238840111,
+          "cagr": 0.05786749691788229,
+          "max_drawdown": -0.0018978641717549705,
+          "spot_pnl": 60943.93051123666,
+          "perp_pnl": -60925.65394331897,
+          "funding_pnl": 12267.56130749908,
+          "costs": 368.8554870154594,
+          "combined_price_pnl": 18.276567917688226,
+          "active_hours": 17544,
+          "stress_flag_hours": 0,
+          "stress_flag_months": [],
+          "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+          "reconciliation_error": -2.1009327610954642e-10,
+          "trade_events": 7,
+          "spot_turnover_usdt": 194108.5473028089,
+          "perp_turnover_usdt": 194178.90036012683,
+          "collateral_reductions": 5
+        }
+      },
+      "double_cost_primary": {
+        "ending_usdt": 111524.77330410888,
+        "net_pnl": 11524.77330410888,
+        "total_return": 0.11524773304108882,
+        "cagr": 0.056013508434710646,
+        "max_drawdown": -0.0031592406138311047,
+        "spot_pnl": 60849.84446546229,
+        "perp_pnl": -60831.66116967751,
+        "funding_pnl": 12243.303926762175,
+        "costs": 736.713918438187,
+        "combined_price_pnl": 18.183295784780057,
+        "active_hours": 17544,
+        "stress_flag_hours": 0,
+        "stress_flag_months": [],
+        "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+        "reconciliation_error": 1.1118572729174048e-10
+      }
+    },
+    "later_history": {
+      "variants": {
+        "monthly_screen": {
+          "ending_usdt": 100189.21465045611,
+          "net_pnl": 189.21465045610967,
+          "total_return": 0.001892146504561154,
+          "cagr": 0.002532334645264367,
+          "max_drawdown": -0.0049486668139279155,
+          "spot_pnl": -10214.686176374029,
+          "perp_pnl": 10229.527028347304,
+          "funding_pnl": 1116.492168001615,
+          "costs": 942.1183695188582,
+          "combined_price_pnl": 14.840851973274766,
+          "active_hours": 3600,
+          "stress_flag_hours": 0,
+          "stress_flag_months": [],
+          "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+          "reconciliation_error": 7.810285751475021e-11,
+          "trade_events": 9,
+          "spot_turnover_usdt": 402756.79036735423,
+          "perp_turnover_usdt": 655443.1729686188,
+          "collateral_reductions": 1
+        },
+        "monthly_plain": {
+          "ending_usdt": 100415.7593088022,
+          "net_pnl": 415.75930880219676,
+          "total_return": 0.0041575930880219936,
+          "cagr": 0.005566397846614057,
+          "max_drawdown": -0.006934078592589987,
+          "spot_pnl": 2021.4577002879778,
+          "perp_pnl": -2009.0806814335447,
+          "funding_pnl": 1484.721592581588,
+          "costs": 1081.3393026339402,
+          "combined_price_pnl": 12.377018854433118,
+          "active_hours": 6552,
+          "stress_flag_hours": 0,
+          "stress_flag_months": [],
+          "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+          "reconciliation_error": 1.1573320080060512e-10,
+          "trade_events": 11,
+          "spot_turnover_usdt": 201349.35790598663,
+          "perp_turnover_usdt": 1199600.104495366,
+          "collateral_reductions": 1
+        },
+        "hold_screen": {
+          "ending_usdt": 100395.79981014974,
+          "net_pnl": 395.799810149736,
+          "total_return": 0.00395799810149744,
+          "cagr": 0.005298991632148864,
+          "max_drawdown": -0.003942946687951809,
+          "spot_pnl": -9136.071722116008,
+          "perp_pnl": 9151.424568001508,
+          "funding_pnl": 1121.969743875846,
+          "costs": 741.5227796116176,
+          "combined_price_pnl": 15.352845885499846,
+          "active_hours": 3600,
+          "stress_flag_hours": 0,
+          "stress_flag_months": [],
+          "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+          "reconciliation_error": 7.73070496506989e-12,
+          "trade_events": 7,
+          "spot_turnover_usdt": 390343.1194681908,
+          "perp_turnover_usdt": 390158.6232139836,
+          "collateral_reductions": 1
+        },
+        "hold_plain": {
+          "ending_usdt": 101000.1835282068,
+          "net_pnl": 1000.1835282068059,
+          "total_return": 0.010001835282068106,
+          "cagr": 0.013404139747469124,
+          "max_drawdown": -0.002505394393354732,
+          "spot_pnl": -3260.6824938987374,
+          "perp_pnl": 3270.60813330822,
+          "funding_pnl": 1237.030496116964,
+          "costs": 246.7726073196717,
+          "combined_price_pnl": 9.925639409482756,
+          "active_hours": 6552,
+          "stress_flag_hours": 0,
+          "stress_flag_months": [],
+          "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+          "reconciliation_error": 3.0809133022557944e-11,
+          "trade_events": 2,
+          "spot_turnover_usdt": 129904.0009380975,
+          "perp_turnover_usdt": 129839.72313422099,
+          "collateral_reductions": 0
+        }
+      },
+      "double_cost_primary": {
+        "ending_usdt": 100752.45915467068,
+        "net_pnl": 752.4591546706797,
+        "total_return": 0.007524591546706816,
+        "cagr": 0.010080019537576757,
+        "max_drawdown": -0.002635831618971851,
+        "spot_pnl": -3256.563350740231,
+        "perp_pnl": 3266.4764513239543,
+        "funding_pnl": 1235.467784716981,
+        "costs": 492.92173063006067,
+        "combined_price_pnl": 9.913100583723462,
+        "active_hours": 6552,
+        "stress_flag_hours": 0,
+        "stress_flag_months": [],
+        "return_status": "No conservative collateral flag in this hourly model; not a liquidation guarantee",
+        "reconciliation_error": 3.5925040720030665e-11
+      }
+    },
+    "comparison_limits": "Persistent execution retains quantity instead of monthly resizing and checks collateral on month-start too. PnL differences also reflect changed exposure and funding receipts, not only saved fees."
+  },
+  "legacy_sections": "base, collateral_diagnostics, execution_comparison, collateral_case, margin_sensitivity, cost_sensitivity and holdout retain the original monthly net_spot experiment. Use revision for current comparisons."
+}
